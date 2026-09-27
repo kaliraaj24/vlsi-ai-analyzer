@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Based VLSI Analyzer - Technical Documentation</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 16mm 16mm 16mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.55;
+      font-size: 13.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .header-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c4a6e 100%);
+      color: #ffffff;
+      padding: 24px 28px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.2);
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+      max-width: 680px;
+      line-height: 1.45;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      page-break-after: avoid;
+    }
+    p {
+      margin-bottom: 10px;
+      color: #334155;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
+      color: #334155;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    code {
+      font-family: "JetBrains Mono", Consolas, Menlo, Monaco, monospace;
+      font-size: 12px;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: "JetBrains Mono", Consolas, Menlo, Monaco, monospace;
+      font-size: 11.5px;
+      line-height: 1.45;
+      padding: 12px 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+      border-left: 4px solid #06b6d4;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+      font-size: inherit;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 12.5px;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td {
+      background: #fcfdfe;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: #0284c7;
+      margin-bottom: 6px;
+    }
+    .formula-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid #16a34a;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 12.5px;
+      color: #14532d;
+      page-break-inside: avoid;
+    }
+    .info-box {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-left: 4px solid #0284c7;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 12.5px;
+      color: #0c4a6e;
+      page-break-inside: avoid;
+    }
+    .footer {
+      margin-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 12px;
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <div class="badge">SYSTEM SPECIFICATION & ARCHITECTURE</div>
+    <h1>AI-Based VLSI Analyzer & Silicon Layout Scanner</h1>
+    <div class="subtitle">
+      Comprehensive technical reference covering machine learning metrics regression, layout computer vision contour mapping, OCR verification evidence chains, and REST APIs.
+    </div>
+  </div>
+
+  <h2>1. Project Overview</h2>
+  <p>
+    In semiconductor VLSI engineering, physical design parameters—such as silicon area ($\mu\text{m}^2$), critical path delay ($\text{ns}$), and dynamic/leakage power dissipation ($\mu\text{W}$)—traditionally require time-intensive iterative synthesis and place-and-route (P&R) cycles. 
+    The <strong>AI-Based VLSI Analyzer</strong> addresses this by providing instant physical metric prediction across process nodes (from 45nm down to 7nm) using a trained multi-output regression model, combined with an automated optical die scanner that localizes and inventories functional hardware components.
+  </p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">⚡ Predict Chip Details (Metrics Engine)</div>
+      <p style="font-size: 12px; margin: 0;">
+        Synthesizes physical scaling laws to estimate total cell area, propagation delays, dynamic switching power, and static leakage with real-time SVG charting.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">🔬 Silicon Layout Scanner (Vision Engine)</div>
+      <p style="font-size: 12px; margin: 0;">
+        Executes Normalized Cross-Correlation (NCC) template matching on chip layouts to identify ALUs, SRAM memory caches, registers, and clock generators with 5-step auditable OCR checks.
+      </p>
+    </div>
+  </div>
+
+  <h2>2. Technology Stack</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Layer</th>
+        <th style="width: 35%;">Technology</th>
+        <th style="width: 40%;">Purpose / Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Frontend UI</strong></td>
+        <td>React 19, Vite 5</td>
+        <td>Fast HMR development, reactive state management, full-screen interactive dialogues</td>
+      </tr>
+      <tr>
+        <td><strong>Styling & Icons</strong></td>
+        <td>Custom CSS Variables, Lucide React</td>
+        <td>Glassmorphic design, light/dark themes, responsive grid/flexbox layouts</td>
+      </tr>
+      <tr>
+        <td><strong>Backend API</strong></td>
+        <td>Flask (Python 3.x), Flask-CORS</td>
+        <td>Microservice REST API running on port 5000 with cross-origin access</td>
+      </tr>
+      <tr>
+        <td><strong>Machine Learning</strong></td>
+        <td>Scikit-Learn (Random Forest)</td>
+        <td>Multi-output regression predicting Area, Delay, and Power simultaneously</td>
+      </tr>
+      <tr>
+        <td><strong>Computer Vision</strong></td>
+        <td>OpenCV (<code>cv2</code>)</td>
+        <td>Normalized Cross Correlation (NCC) and coordinate bounding box clustering</td>
+      </tr>
+      <tr>
+        <td><strong>Data Processing</strong></td>
+        <td>NumPy, Pandas, Joblib</td>
+        <td>Synthetic scaling generation, data framing, and serialized model storage</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Machine Learning & Computer Vision Algorithms</h2>
+  
+  <h3>A. Multi-Output Random Forest Regressor</h3>
+  <p>
+    The regression engine takes 5 physical hardware parameters: <code>cell_count</code>, <code>seq_ratio</code> (sequential flip-flop ratio), <code>tech_node</code> (nm), <code>voltage</code> (V), and <code>frequency</code> (MHz). An ensemble of 100 decision trees calculates targets simultaneously:
+  </p>
+  
+  <div class="formula-box">
+    <strong>Physical Scaling Formulations:</strong><br>
+    • <strong>Area Scaling ($\mu\text{m}^2$):</strong> $\text{Area} = N_{\text{cells}} \times A_{\text{base}} \times \left(\frac{\text{tech\_node}}{45}\right)^2 \times \eta_{\text{routing}}$<br>
+    • <strong>Propagation Delay ($\text{ns}$):</strong> $\text{Delay} = (N_{\text{cells}} \cdot 0.0003 + 1.1) \times \left(\frac{\text{tech\_node}}{45}\right) \times \left(\frac{1.1}{V}\right)$<br>
+    • <strong>Total Power ($\mu\text{W}$):</strong> $P_{\text{total}} = \underbrace{\alpha C_{\text{gate}} V^2 f \cdot N_{\text{cells}}}_{P_{\text{dynamic}}} + \underbrace{N_{\text{cells}} \cdot I_0 \cdot e^{0.08(45 - \text{tech\_node})} \cdot \frac{V}{1.1}}_{P_{\text{leakage}}}$
+  </div>
+
+  <h3>B. Normalized Cross Correlation (NCC) Component Detection</h3>
+  <p>
+    Layout component discovery evaluates template similarities against normalized die scans:
+  </p>
+  <div class="formula-box">
+    $$R(x,y) = \frac{\sum_{x',y'} (T'(x',y') \cdot I'(x+x',y+y'))}{\sqrt{\sum_{x',y'} T'(x',y')^2 \cdot \sum_{x',y'} I'(x+x',y+y')^2}}$$
+    <br>
+    • Bounding boxes exceeding threshold <strong>$R \ge 0.75$</strong> are consolidated via OpenCV's <code>groupRectangles</code> ($\text{groupThreshold}=1, \epsilon=0.2$).
+  </div>
+
+  <h2>4. System Architecture & File Layout</h2>
+  <pre><code>vlsi-ai-analyzer/
+├── api_server.py              # Flask server hosting /api/predict & /api/detect (Port 5000)
+├── detect_components.py       # OpenCV template matching, NCC engine, coordinates calculation
+├── predict_details.py         # Synthetic dataset generator & Random Forest training pipeline
+├── vlsi_regressor.joblib      # Serialized scikit-learn regressor model
+├── package.json               # Node dependencies (React 19, Lucide, Vite)
+├── vite.config.js             # Vite bundler configuration (Port 5173)
+├── src/
+│   ├── main.jsx               # React DOM entry point
+│   ├── App.jsx                # Top-level shell, theme toggling, view routing
+│   ├── index.css              # Custom styling, dark/light themes, animations
+│   └── components/
+│       ├── MetricEstimator.jsx   # Metrics sliders & dynamic SVG scaling graph
+│       ├── ComponentDetector.jsx # Full-screen layout scanner & OCR report dialogue
+│       ├── BoardComparer.jsx     # Side-by-side comparison & defect analyzer
+│       ├── SiliconAnalyzer.jsx   # Silicon die inspection view
+│       └── boardDatabase.js      # Specifications for Basys 3, ZedBoard, Nexys A7, etc.</code></pre>
+
+  <h2>5. REST API Specifications</h2>
+
+  <h3>1. Metrics Prediction Endpoint</h3>
+  <p><strong><code>POST /api/predict</code></strong> (Content-Type: <code>application/json</code>)</p>
+  <pre><code>// Request Body
+{
+  "cell_count": 5000,
+  "seq_ratio": 0.25,
+  "tech_node": 14,
+  "voltage": 1.0,
+  "frequency": 1200
+}
+
+// Response (200 OK)
+{
+  "area": 1245.82,
+  "delay": 1.38,
+  "power": 210.45
+}</code></pre>
+
+  <h3>2. Component Detection Endpoint</h3>
+  <p><strong><code>POST /api/detect</code></strong> (Content-Type: <code>multipart/form-data</code>)</p>
+  <pre><code>// Request: Form data field 'image' containing layout image file (.png, .jpg)
+// Response (200 OK)
+{
+  "components": [
+    {
+      "id": "alu_0",
+      "name": "Arithmetic Logic Unit (ALU)",
+      "type": "ALU",
+      "x": 38.5,
+      "y": 35.2,
+      "w": 24.0,
+      "h": 26.0,
+      "gates": 1024,
+      "area": "1,200 µm²"
+    }
+  ],
+  "counts": { "ALU": 1 }
+}</code></pre>
+
+  <h2>6. Execution & Quickstart Guide</h2>
+  <div class="info-box">
+    <strong>Local Host URLs:</strong><br>
+    • <strong>Frontend Interface:</strong> <code>http://localhost:5173</code><br>
+    • <strong>Backend API:</strong> <code>http://localhost:5000</code>
+  </div>
+
+  <ol>
+    <li>
+      <strong>Install Python Dependencies:</strong>
+      <pre><code>pip install flask flask-cors scikit-learn numpy pandas opencv-python joblib</code></pre>
+    </li>
+    <li>
+      <strong>Train Machine Learning Model:</strong>
+      <pre><code>python predict_details.py</code></pre>
+    </li>
+    <li>
+      <strong>Launch Backend API:</strong>
+      <pre><code>python api_server.py</code></pre>
+    </li>
+    <li>
+      <strong>Launch Frontend Interface:</strong>
+      <pre><code>npm run dev</code></pre>
+    </li>
+  </ol>
+
+  <div class="footer">
+    AI-VLSI Hub • Automated Technical Documentation • Generated for Local Deployment & Archival
+  </div>
+
+</body>
+</html>
