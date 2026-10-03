@@ -1,5 +1,10 @@
 # AI-Based VLSI Analyzer & Silicon Layout Scanner
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vlsi-ai-analyzer.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kaliraaj24/vlsi-ai-analyzer)
+
+> 🚀 **Live Deployed Web Application**: **[https://vlsi-ai-analyzer.vercel.app/](https://vlsi-ai-analyzer.vercel.app/)**
+
 An intelligent VLSI computer-aided design (CAD) tool combining **Machine Learning Multi-Output Regression** for chip metrics estimation (Area, Delay, Power) and **Computer Vision Pattern Matching** for layout component detection, sub-block mapping, and auditable OCR inspection.
 
 ---
@@ -138,7 +143,9 @@ python api_server.py
 ```bash
 npm run dev
 ```
-*Runs on `http://localhost:5173`.*
+*Runs locally on `http://localhost:5173`.*
+
+> 🌐 **Production Deployment**: You can also use the live cloud-hosted web app directly at **[https://vlsi-ai-analyzer.vercel.app/](https://vlsi-ai-analyzer.vercel.app/)**.
 
 ---
 
